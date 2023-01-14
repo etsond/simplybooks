@@ -20,15 +20,19 @@ function BookCreate({ onCreate }) {
         // after the user enter the title then to empty the input
         setTitle('');
     }
-    return <div>
+    return (
+        // adding a class to add green background behind book, title, and the submit button
+    <div className="book-create">
+        <h3>Add a Book</h3>
         {/* calling the handler when the user submit the form */}
         <form onSubmit={handleSubmit}>
             <label>Title</label>
             {/* o */}
-            <input value={title} onChange={handleChange}/>
-            <button>Submit</button>
+            <input className="input" value={title} onChange={handleChange}/>
+            <button className="button" >Submit</button>
         </form>
     </div>
+    );
 }
 
 export default BookCreate;
