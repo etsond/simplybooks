@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/simplybooks/static/css/main.1f59ae86.css",
+    "main.js": "/simplybooks/static/js/main.20a9853d.js",
+    "index.html": "/simplybooks/index.html",
+    "main.1f59ae86.css.map": "/simplybooks/static/css/main.1f59ae86.css.map",
+    "main.20a9853d.js.map": "/simplybooks/static/js/main.20a9853d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f59ae86.css",
+    "static/js/main.20a9853d.js"
+  ]
+}
