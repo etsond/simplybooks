@@ -7,9 +7,10 @@ function App() {
 const [books, setBooks] = useState([]);
 
 // delete book per the id
-
 const deleteBookByID = (id) => {
+    // removing the object using filter (with new array)
     const updatedBooks = books.filter((book) => {
+        // return false to remove
         return book.id !== id;
     });
     setBooks(updatedBooks);
@@ -22,7 +23,7 @@ const createBook = (title) => {
         // copying the old array
         ...books,
         // generaing a random number 
-        {id: Math.round(Math.random() * 999), title: title}
+        {id: Math.round(Math.random() * 9999), title: title}
        
     ];
     // seetting the setbooks to the updated copy of the old array

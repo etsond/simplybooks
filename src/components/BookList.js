@@ -1,9 +1,9 @@
 import BookShow from "./BookShow"
 
-function BookList ({ books }){
+function BookList ({ books, onDelete }){
 
     // mapping over the books
-    const renderedBooks = books.map((book, onDelete) => {
+    const renderedBooks = books.map((book) => {
         //  // for each of the id show the book
         return (
         

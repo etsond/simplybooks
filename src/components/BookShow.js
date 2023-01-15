@@ -7,16 +7,12 @@ const handleclick = () => {
     onDelete(book.id);
 };
    
-   
    return ( 
-        <div 
-            className="book-show">
+        <div className="book-show">
             {book.title}
-                <div 
-                    className="actions">
-                        <button 
-                            className="delete"
-                            onClick={handleclick}>
+                    <div className="actions">
+                        {/* when user click event handler(eventHandler) */}
+                        <button className="delete" onClick={handleclick}>
                             Delete
                          </button>
                 </div>
