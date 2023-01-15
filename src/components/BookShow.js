@@ -11,7 +11,7 @@ const handleclick = () => {
         <div className="book-show">
             {book.title}
                     <div className="actions">
-                        {/* when user click event handler(eventHandler) */}
+                        {/* when user click event handler(eventHandle) */}
                         <button className="delete" onClick={handleclick}>
                             Delete
                          </button>
