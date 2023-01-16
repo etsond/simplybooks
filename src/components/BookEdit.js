@@ -19,13 +19,15 @@ const handleSubmit = (event) => {
 }
 
 // form to pop up when the user click the button
-    return <form onSubmit={handleSubmit} className="book-edit">
+    return (
+        <form onSubmit={handleSubmit} className="book-edit">
         <label>Title</label>
         <input className="input" value={title} onChange={handleChange}/>
         <button className="button is-primary">
             Save
         </button>
-    </form>;
+    </form>
+    );
 }
 
 export default BookEdit;
