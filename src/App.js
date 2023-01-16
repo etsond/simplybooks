@@ -28,15 +28,12 @@ const editBookById = async (id, newTitle) => {
       title: newTitle  
     })
     console.log(response)
-
-
-
     // updating the book by id (receiving each book)
     const updatedBooks = books.map((book) => {
         // if book that is being pass into the function
         if(book.id === id) {
-            // if that is true upate the new object by returning a copy of it + new title
-            return {...book, title: newTitle}
+            // if that is true upate the new object by returning a copy of it + new updated response from the API 
+            return {...book, ...response.data}
         }
         // if its another book then return that book
         return book;
@@ -46,7 +43,11 @@ const editBookById = async (id, newTitle) => {
 };
 
 // delete book per the id
-const deleteBookByID = (id) => {
+const deleteBookByID = async (id) => {
+    // deleting the book
+    await axios.delete(`http://localhost:3001/books/${id}`);
+
+
     // removing the object using filter (with new array)
     const updatedBooks = books.filter((book) => {
         // return false to remove
