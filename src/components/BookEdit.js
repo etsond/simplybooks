@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function BookEdit({ book, onEdit, onSubmit }){ //receiving the book object
+function BookEdit({ book, onSubmit }){ //receiving the book object
 // declaring the state for the input
 const [title, setTitle] = useState(book.title); //book.title as the default state
 
@@ -13,10 +13,9 @@ const handleChange = (event) => {
 // adding an event handler
 const handleSubmit = (event) => { 
     event.preventDefault(); // preventing the form to not re-submit
-    
-    onEdit(book.id, title); //put in the id, and the title
+
     //  console.log('new title is', title);
-    onSubmit()
+    onSubmit(book.id, title)
 }
 
 // form to pop up when the user click the button

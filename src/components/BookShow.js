@@ -18,19 +18,22 @@ const handleEditClick = () => {
     setShowEdit(!showEdit)
 };
 
-const handleSubmit = () => {
+const handleSubmit = (id, newTitle) => {
     setShowEdit(false)
+    // helps to remove both onSubmit and oneEdit to one since they do the same thing
+    onEdit(id, newTitle)
 }
 
 // showing logic, by default show the book title
 let content = <h3>{book.title}</h3>
 // if show edit is true then show BookEdit component.
     if (showEdit) {
-        content = <BookEdit onSubmit={handleSubmit} onEdit={onEdit} book={book} />; // taking the object of book and passing it --- BookEdit
+        content = <BookEdit onSubmit={handleSubmit} book={book} />; // taking the object of book and passing it --- BookEdit
     }
 
    return ( 
         <div className="book-show">
+            <img src={`https://picsum.photos/see/${book.id}/300/200`} alt="randomImage" />
             <div>{content}</div>
                     <div className="actions">
                         {/* display the icon */}
