@@ -3,7 +3,7 @@ import BookEdit from "./BookEdit"
 
 // import BookList from "./BookList";
 
-function BookShow ({ book, onDelete }){
+function BookShow ({ book, onDelete, onEdit }){
 // dont show the edit button by default
 const [showEdit, setShowEdit] = useState(false);
 
@@ -16,17 +16,18 @@ const handleDeleteleclick = () => {
 const handleEditClick = () => {
     // toggle the value, so setting to the opposite of what it currently is
     setShowEdit(!showEdit)
+};
+
+const handleSubmit = () => {
+    setShowEdit(false)
 }
 
 // showing logic, by default show the book title
 let content = <h3>{book.title}</h3>
 // if show edit is true then show BookEdit component.
     if (showEdit) {
-        content = <BookEdit />;
+        content = <BookEdit onSubmit={handleSubmit} onEdit={onEdit} book={book} />; // taking the object of book and passing it --- BookEdit
     }
-
-
-
 
    return ( 
         <div className="book-show">

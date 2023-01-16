@@ -6,6 +6,22 @@ function App() {
     // by default there's no book available
 const [books, setBooks] = useState([]);
 
+const editBookById = (id, newTitle) => {
+    // updating the book by id (receiving each book)
+    const updatedBooks = books.map((book) => {
+        // if book that is being pass into the function
+        if(book.id === id) {
+            // if that is true upate the new object by returning a copy of it + new title
+            return {...book, title: newTitle}
+        }
+        // if its another book then return that book
+        return book;
+    });
+// set the state after you the new book is created
+    setBooks(updatedBooks)
+};
+
+
 // delete book per the id
 const deleteBookByID = (id) => {
     // removing the object using filter (with new array)
@@ -44,7 +60,7 @@ const createBook = (title) => {
        
          <div className="app">
             {/* showingg the list of books */}
-           <BookList books={books} onDelete={deleteBookByID}/>
+           <BookList onEditi={editBookById} books={books} onDelete={deleteBookByID}/>
             <BookCreate onCreate={createBook}/></div>)
 }
 
