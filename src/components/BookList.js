@@ -1,6 +1,6 @@
 import BookShow from "./BookShow"
 
-function BookList ({ books, onDelete }){
+function BookList ({ books, onDelete, onEdit }){
 
     // mapping over the books
     const renderedBooks = books.map((book) => {
@@ -8,6 +8,7 @@ function BookList ({ books, onDelete }){
         return (
         
         <BookShow 
+        onEdit={onEdit}
         onDelete={onDelete} 
         key={book.id}
          book={book} 
