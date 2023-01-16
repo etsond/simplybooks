@@ -20,9 +20,17 @@ const fetchBooks = async() => {
 useEffect(() => {
     //run at an exact time
     fetchBooks();
-    // empty array
+    // call after the first render.... stop calling after
 }, []);
-const editBookById = (id, newTitle) => {
+const editBookById = async (id, newTitle) => {
+    // request
+    const response = await axios.put(`localhost:3001/books/${id}`, {
+      title: newTitle  
+    })
+    console.log(response)
+
+
+
     // updating the book by id (receiving each book)
     const updatedBooks = books.map((book) => {
         // if book that is being pass into the function
