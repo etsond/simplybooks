@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
 
@@ -6,13 +7,33 @@ function App() {
     // by default there's no book available
 const [books, setBooks] = useState([]);
 
-const editBookById = (id, newTitle) => {
+// fetching for previous books that was created
+
+const fetchBooks = async() => {
+    //getting the responose from axios
+    const response = await axios.get('http://localhost:3001/books');
+    // setbooks updating the state with response.data from axios
+    setBooks(response.data)
+
+};
+// using effect to avoid fetch infinitely
+useEffect(() => {
+    //run at an exact time
+    fetchBooks();
+    // call after the first render.... stop calling after
+}, []);
+const editBookById = async (id, newTitle) => {
+    // request
+    const response = await axios.put(`localhost:3001/books/${id}`, {
+      title: newTitle  
+    })
+    console.log(response)
     // updating the book by id (receiving each book)
     const updatedBooks = books.map((book) => {
         // if book that is being pass into the function
         if(book.id === id) {
-            // if that is true upate the new object by returning a copy of it + new title
-            return {...book, title: newTitle}
+            // if that is true upate the new object by returning a copy of it + new updated response from the API 
+            return {...book, ...response.data}
         }
         // if its another book then return that book
         return book;
@@ -21,9 +42,12 @@ const editBookById = (id, newTitle) => {
     setBooks(updatedBooks)
 };
 
-
 // delete book per the id
-const deleteBookByID = (id) => {
+const deleteBookByID = async (id) => {
+    // deleting the book
+    await axios.delete(`http://localhost:3001/books/${id}`);
+
+
     // removing the object using filter (with new array)
     const updatedBooks = books.filter((book) => {
         // return false to remove
@@ -33,29 +57,22 @@ const deleteBookByID = (id) => {
 };
 
 // event handler for when the user submit the form
-const createBook = (title) => {
-    // creating a new array to copy from the old array but not deleeting it
+const createBook = async (title) => {
+// making a request using axios
+const response = await axios.post('http://localhost:3001/books', {
+    title
+});
+
+    // creating a new array to copy from the old array but not deleting it
     const updatedBooks = [
-        // copying the old array
         ...books,
-        // generaing a random number 
-        {id: Math.round(Math.random() * 9999), title: title}
+        // adding the new book from axios.data
+        response.data
        
     ];
-    // seetting the setbooks to the updated copy of the old array
-    setBooks(updatedBooks);
-
-    // books.push({ id: 123, title: title});
-    // console.log(books)
-    // setBooks(books)
-    // updating the book
-
-    // TODO update piece of state
-
-    // console.log("Need to add book with: ", title)
-
+    // // seetting the setbooks to the updated copy of the old array
+     setBooks(updatedBooks);
 }; 
-
     return (
        
          <div className="app">
@@ -64,7 +81,5 @@ const createBook = (title) => {
            <BookList onEditi={editBookById} books={books} onDelete={deleteBookByID}/>
             <BookCreate onCreate={createBook}/></div>)
 }
-
-
 
 export default App;

@@ -28,8 +28,13 @@ function BookCreate({ onCreate }) {
         <form onSubmit={handleSubmit}>
             <label>Title</label>
             {/* o */}
-            <input className="input" value={title} onChange={handleChange}/>
-            <button className="button" >Submit</button>
+            <input className="input"
+                value={title} 
+                 onChange={handleChange}/>
+            <button
+             className="button" >
+                Create
+                </button>
         </form>
     </div>
     );
