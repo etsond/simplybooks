@@ -47,6 +47,6 @@ let content = <h3>{book.title}</h3>
                 </div>
         </div>)
      }
-
+// rendering the pages 
 
 export default BookShow;
