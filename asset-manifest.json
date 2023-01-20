@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/simplybooks/static/css/main.1f59ae86.css",
-    "main.js": "/simplybooks/static/js/main.d1c9778a.js",
+    "main.js": "/simplybooks/static/js/main.a0e099a8.js",
     "index.html": "/simplybooks/index.html",
     "main.1f59ae86.css.map": "/simplybooks/static/css/main.1f59ae86.css.map",
-    "main.d1c9778a.js.map": "/simplybooks/static/js/main.d1c9778a.js.map"
+    "main.a0e099a8.js.map": "/simplybooks/static/js/main.a0e099a8.js.map"
   },
   "entrypoints": [
     "static/css/main.1f59ae86.css",
-    "static/js/main.d1c9778a.js"
+    "static/js/main.a0e099a8.js"
   ]
 }
