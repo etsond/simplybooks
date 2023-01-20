@@ -8,7 +8,6 @@ function App() {
 const [books, setBooks] = useState([]);
 
 // fetching for previous books that was created
-
 const fetchBooks = async() => {
     //getting the responose from axios
     const response = await axios.get('http://localhost:3001/books');
@@ -27,7 +26,7 @@ const editBookById = async (id, newTitle) => {
     const response = await axios.put(`localhost:3001/books/${id}`, {
       title: newTitle  
     })
-    console.log(response)
+    // console.log(response)
     // updating the book by id (receiving each book)
     const updatedBooks = books.map((book) => {
         // if book that is being pass into the function
@@ -38,6 +37,7 @@ const editBookById = async (id, newTitle) => {
         // if its another book then return that book
         return book;
     });
+
 // set the state after you the new book is created
     setBooks(updatedBooks)
 };
@@ -58,11 +58,10 @@ const deleteBookByID = async (id) => {
 
 // event handler for when the user submit the form
 const createBook = async (title) => {
-// making a request using axios
+// making a post request using axios
 const response = await axios.post('http://localhost:3001/books', {
     title
 });
-
     // creating a new array to copy from the old array but not deleting it
     const updatedBooks = [
         ...books,
@@ -74,11 +73,10 @@ const response = await axios.post('http://localhost:3001/books', {
      setBooks(updatedBooks);
 }; 
     return (
-       
          <div className="app">
             <h1>Reading List</h1>
             {/* showingg the list of books */}
-           <BookList onEditi={editBookById} books={books} onDelete={deleteBookByID}/>
+           <BookList onEdit={editBookById} books={books} onDelete={deleteBookByID}/>
             <BookCreate onCreate={createBook}/></div>)
 }
 
